@@ -1,10 +1,11 @@
 import './style.css';
 
-export default function Description() {
+export default function Textarea() {
   const wrapper = document.createElement('div');
   wrapper.classList.add('wrapper', 'textarea');
-  const title = document.createElement('h2');
-  title.innerHTML = 'RSS Vertual keyboard';
-  wrapper.append(title);
+  const textarea = document.createElement('textarea');
+  textarea.rows = '50';
+  textarea.cols = '3';
+  wrapper.append(textarea);
   return wrapper;
 }
