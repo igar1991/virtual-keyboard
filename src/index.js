@@ -1,12 +1,7 @@
-/* eslint linebreak-style: ["error", "windows"] */
+import Description from './components/description/description.js';
+import Title from './components/title/title.js';
+
 import './style.css';
 
-function component() {
-  const element = document.createElement('div');
-  element.innerHTML = 'Hello world! He';
-  element.className = 'wrapper';
-
-  return element;
-}
-
-document.body.append(component());
+document.body.append(Title());
+document.body.append(Description());

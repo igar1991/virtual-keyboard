@@ -1,3 +1,5 @@
+/* eslint linebreak-style: ["error", "unix"] */
+
 module.exports = {
   env: {
     browser: true,
@@ -14,6 +16,10 @@ module.exports = {
     'import/extensions': [
       'error',
       'always',
+    ],
+    'linebreak-style': [
+      'error',
+      'windows',
     ],
   },
 };

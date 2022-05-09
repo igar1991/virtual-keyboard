@@ -1,5 +1,11 @@
-.wrapper {
-    width: 100px;
-    height: 100px;
-    background-color: red;
+* {
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
 }
