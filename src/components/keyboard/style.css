@@ -35,4 +35,10 @@
     min-width: 80px;
 }
 
+.active-button {
+    transform: scale(0.9);
+    background-color: rgb(233, 193, 233);
+    transition-duration: 0.2s;
+}
+
 

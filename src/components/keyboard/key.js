@@ -1,12 +1,16 @@
 export default function Key(item) {
   const { code, small, shift } = item;
   const wrapper = document.createElement('div');
+  const isShift = localStorage.getItem('isShift');
   wrapper.classList.add(`${code}`, 'key-button');
-  const smallKey = document.createElement('span');
-  smallKey.innerHTML = small;
-  const shiftKey = document.createElement('span');
-  shiftKey.innerHTML = shift;
-  shiftKey.classList.add('hidden');
-  wrapper.append(smallKey, shiftKey);
+  wrapper.dataset.code = `${code}`;
+  const key = document.createElement('span');
+  if (isShift === 'Y') {
+    key.innerHTML = shift;
+  } else {
+    key.innerHTML = small;
+  }
+
+  wrapper.append(key);
   return wrapper;
 }
