@@ -1,0 +1,44 @@
+.keyboard {
+    width: 750px;
+    margin: 20px auto 20px;
+}
+.row-keyboard {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.key-button {
+    padding: 5px 15px;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 5px rgba(65, 63, 61, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+}
+
+.key-button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.key-button span {
+    display: block;
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.Space {
+    min-width: 250px;
+}
+.ShiftRight, .ShiftLeft, .Enter, .CapsLock {
+    min-width: 80px;
+}
+
+.active-button {
+    transform: scale(0.9);
+    background-color: rgb(233, 193, 233);
+    transition-duration: 0.2s;
+}
+
+
