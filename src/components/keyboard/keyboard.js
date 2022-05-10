@@ -70,12 +70,17 @@ function checkLang(func, ...codes) {
 
 function ckickButton(e) {
   e.preventDefault();
+  if ((!e.target.closest('.key-button') && !e.code) || e.repeat) return;
   const keyData = localStorage.getItem('lang') === 'ru' ? keyDataRu : keyDataEn;
   const isShift = localStorage.getItem('isShift');
-  const key = keyData.find((item) => item.code === e.code);
-  if (!key || e.repeat) return;
-  pressed.add(e.code);
-  const currentButton = document.querySelector(`.${e.code}`);
+  let key;
+  if (e.target.closest('.key-button')) {
+    key = keyData.find((item) => item.code === e.target.closest('.key-button').dataset.code);
+  } else {
+    key = keyData.find((item) => item.code === e.code);
+  }
+  pressed.add(key.code);
+  const currentButton = document.querySelector(`.${key.code}`);
   currentButton.classList.add('active-button');
   checkLang(switchLang, 'ControlLeft', 'AltLeft');
   switch (key.code) {
@@ -93,11 +98,11 @@ function ckickButton(e) {
       break;
     case 'CapsLock': capsKey();
       break;
-    case 'Alt':
+    case 'Lang':
       break;
     case 'ShiftLeft': capsKey();
       break;
-    case 'ShiftRight':
+    case 'ShiftRight': capsKey();
       break;
     case 'AltLeft':
       break;
@@ -110,11 +115,21 @@ function ckickButton(e) {
 
 function upButton(e) {
   e.preventDefault();
-  if (!keyDataRu.find((item) => item.code === e.code)) return;
-  const currentButton = document.querySelector(`.${e.code}`);
-  pressed.delete(e.code);
+  if ((!e.target.closest('.key-button') && !e.code) || e.repeat) return;
+  const keyData = localStorage.getItem('lang') === 'ru' ? keyDataRu : keyDataEn;
+  let key;
+  if (e.target.closest('.key-button')) {
+    key = keyData.find((item) => item.code === e.target.closest('.key-button').dataset.code);
+  } else {
+    key = keyData.find((item) => item.code === e.code);
+  }
+  const currentButton = document.querySelector(`.${key.code}`);
+  pressed.delete(key.code);
   currentButton.classList.remove('active-button');
-  if (e.code === 'ShiftLeft') {
+  if (key.code === 'ShiftLeft') {
+    capsKey();
+  }
+  if (key.code === 'ShiftRight') {
     capsKey();
   }
 }
